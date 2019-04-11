@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>实现n的阶乘</title>
+	</head>
+	<body>
+		
+		<script>
+			
+			// n的阶乘的意思是从 n*(n-1)*······*2*1
+			// n的阶乘的规律：n! = n * (n-1)!
+			
+			function mul(n){
+				// 解法1：使用for循环来做
+//				let num = 1;
+//				for (let i = 1; i <= n; i++) {
+//					num = num * i;
+//				}
+//				return num;
+
+				// 解法2：使用递归来做
+				if (n == 1 || n == 0) { // 这个判断的意义是定位为递归的出口，否则会进入无限循环
+					return 1;
+				}
+				return n * mul(n-1);
+			}
+			console.log(mul(5)); // 结果为120
+			
+		</script>
+		
+	</body>
+</html>

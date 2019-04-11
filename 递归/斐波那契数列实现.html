@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>斐波那契数列</title>
+	</head>
+	<body>
+		
+		<script>
+			
+			// 斐波那契数列示例：1、1、2、3、5、8、13······
+			// 斐波那契数列就是当前位置的结果是当前位置前两位的和
+			// 斐波那契数列规律：fb(n) = fb(n-1) + fb(n-2);
+			function fb(n) {
+				if(n == 1 || n == 2) {
+					return 1;
+				}
+				return fb(n-1) + fb(n-2);
+			}
+			
+			console.log(fb(5));  // 结果为5
+			console.log(fb(7));  // 结果为13
+			console.log(fb(10)); // 结果为55
+			
+		</script>
+		
+	</body>
+</html>
