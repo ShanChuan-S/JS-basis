@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>预编译基础</title>
+</head>
+<body>
+    
+    <script>
+    
+        // JS预编译过程  ==> 4 部曲
+        // 1、 创建 AO 对象
+        // 2、 找形参和变量声明，将变量和形参名作为 AO属性名，值为 undefined
+        // 3、 将实参值和形参相统一
+        // 4、 在函数体里面找变量声明，值赋予函数体
+
+        // 实例 1：
+        function fn(a){  // 里面所有的执行语句会在4部曲执行完之后执行
+            console.log(a); 
+            var a = 123; // 对 a 的赋值在4部曲之后开始执行
+            console.log(a);
+            function a() {};
+            console.log(a);
+            var b = function () {};
+            console.log(b);
+            b = 234;
+            console.log(b);
+        }
+        fn(1);
+        // 第一步：
+        // OA {}
+        // 第二步：
+        // OA {
+        //     a: undefined,
+        //     b: undefined
+        // }
+        // 第三步：
+        // OA {
+        //     a: 1,
+        //     b: undefined
+        // }
+        // 第四步：
+        // OA {
+        //     a: function a() {},
+        //     b: function () {}
+        // }
+
+
+    </script>
+    
+</body>
+</html>

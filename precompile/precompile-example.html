@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>预编译实例</title>
+</head>
+<body>
+    
+    <script>
+    
+        console.log(a); // function a () { ... }
+        // console.log(b);// 报错
+        function a (a) {
+            console.log(a); // undefined
+            var a = 123;
+            console.log(a); // 123
+            a = 234;
+            console.log(a); // 234
+            // console.log(b); // 报错
+            b = 123; // 这一步是当做语句来执行的，
+                     // 因为 b 未进行变量声明，所以 b 默认加到了GO（全局对象）中，并赋值123
+                     // 上一个console时没有 b 的变量声明，所以会直接报错；
+                     // 下一个console时 b 在 AO 中时没有的，所以往函数的上一级去找，最后在 GO 中拿到 b 的值
+            console.log(b); // 123
+        }
+        // console.log(b);// 报错
+        a();
+        console.log(b); // 123
+        // console.log(c); // 报错
+        c = 345;
+        console.log(c); // 345
+
+    </script>
+
+</body>
+</html>
