@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>细胞分裂计算</title>
+</head>
+<body>
+    
+    <input type="url" placeholder="http://" >
+
+    <script>
+    
+        // 1个细胞，一个小时分裂一次，生命周期是3小时，求n小时后容器内，有多少细胞。
+
+        var afib = function (n){
+            if(n===0){return 1;} //初始的那个细胞
+            return afib(n-1)+bfib(n-1)+cfib(n-1);
+        }
+        var bfib = function(n){
+            if(n===0){return 0;} //一个小时之后才会生成
+            return afib(n-1);
+        }
+        var cfib = function(n){
+            if(n===0||n===1){return 0;} //前两小时还没生成
+            return bfib(n-1);
+        }
+
+        function  text(time) {
+            return afib(time)+bfib(time)+cfib(time);
+        }
+
+        var time = 2;
+        console.log(text(time));
+
+    </script>
+
+</body>
+</html>
