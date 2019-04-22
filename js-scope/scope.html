@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>函数作用域</title>
+</head>
+<body>
+    
+    <script>
+        // 作用域精解
+
+        // 1、运行其上下文
+        //    当函数的语句在运行时，会创建一个成为执行期上下文的内部对象。也就是 AO
+        //    一个执行期上下文定义了一个函数执行时的环境，函数每次执行时对应的上下文都是独一无二的，
+        //    所以多次调用一个函数会导致创建多个执行期上下文，
+        //    当函数执行完毕，它所产生的执行期上下文被销毁
+
+        // 2、查找变量
+        //    从作用域链的顶端依次向下查找
+
+        // 例子
+        function a() {
+            function b() {
+                var c = 123;
+                a = 1;
+            }
+            var a = 123;
+            b();
+            console.log(a);
+        }
+        var glob = 100;
+        a();
+
+        // 初始化时 GO = {a: function a() {}, glob: 100};
+        // a在定义时就在其作用域链上进行了存值，a.[[scope]]叫做a的作用域链
+        // a 定义
+        // 也就是 a.[[scope]] --> 0: GO （作用域链的第0位存放的时GO）
+        // a 执行
+        // a 的 AO = {a: 123, b: function b() {}};
+        // a.[[scope]] --> 0: AO, // a 的 AO （作用域链的第0位存放的是 a 的 AO，将原本的 GO 挤到下一位）
+        //                 1: GO             （作用域链的第1位存放的是 GO）
+        // b 定义
+        // a.[[scope]] --> 0: AO, // a 的 AO 
+        //                 1: GO             
+        // b执行
+        // b 的 AO = {c: 123};
+        // b.[[scope]] --> 0: AO, // b 的 AO
+        //                 1: AO, // a 的 AO 和上面 a 的作用域链里面的 a 的 AO 是同一个
+        //                 2: GO  
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+    
+        var str = false + 1; // 先将false转为number类型，对应的结果是0，所以str的结果是1
+        console.log(str); // 1
+        var demo = false == 1; // 先计算赋值后面的表达式
+                               // false == 1 结果为false       false == 0 结果为 true
+        console.log(demo); // false
+        if(typeof(a) && -true + (+undefined) + '') {
+            // typeof(a)  ==> a是undefined，typeof(a)的结果为string类型的'undefined'
+            // -true      ==> 运算时先将true转为Number类型结果为1，所以-true的结果为-1
+            // +undefined ==> 运算时先将undefined转为Number类型结果为NaN，所以+undefined的结果依然是NaN
+            // -true + (+undefined) ==> 任何的数与NaN相加结果都是 NaN
+            // -true + (+undefined) + '' ==> 结果转为string类型的NaN，所以整个判断的结果为true
+
+            // 注 : typeof(null) 结果为 'object' , null本身是个原始值，但是在typeof的时候
+            //                   将null认为是给对象占位的，所以返回的结果是object
+
+            console.log('基础'); // 能打印
+        }
+        if(11 + '11' * 2 == 33) {
+            // * 号两边的都先转换成为 Number 类型
+            console.log('基础2'); // 能打印
+        }
+        !!' ' + !!'' - !!false || console.log('是否能打印'); // 不能打印
+        // !!' '   ==>  非非空格字符串，结果为true，
+        // !!''    ==>  非非空串，结果为false，
+        // !!false ==>  非非false，结果为false
+        // 所以就是 true + false - false => 1 + 0 - 0 , 结果为 1
+        // 所以 1 || console.log(), 前面已经为true，后面就不执行了
+        console.log(!!' ' + !!'' - !!false);
+
+    </script>
+
+</body>
+</html>
