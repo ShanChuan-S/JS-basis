@@ -13,3 +13,5 @@ precompile文件夹                ===>  预编译过程以及实例文件夹
 
 js-scope文件夹                  ===>  关于 JS 作用域的知识
     scope.html                  ===>  作用域精解知识
+
+js-closure文件夹                ===>  关于 JS 闭包的知识
